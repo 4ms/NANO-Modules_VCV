@@ -55,12 +55,6 @@ struct QUART : Module
         config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
         for (int i = 0; i < CHANNELS; i++){
             // Configure parameters for rise time, fall time, and switch position with default values.
-            configParam(RISE + i, 0.f, 1.f, 0.5f, "Rise time");
-            configParam(FALL + i, 0.f, 1.f, 0.5f, "Fall time");
-            configParam(SW + i, 0.f, 2.f, 1.0f, "Frequency divider");
-            configInput(TRIG + i, "Trigger " + std::to_string(i + 1));
-            configOutput(OUT + i, "Channel " + std::to_string(i + 1));
-
             // Initialize the envelope generator for each channel.
             ENV[i].init(APP->engine->getSampleRate());
             ENV[i].setAttackShape(0.8f);
@@ -68,6 +62,31 @@ struct QUART : Module
             ENV[i].setOutputLevel(8.0f);
             ENV[i].setResetOnTrigger(false);
         }  
+
+        configParam(RISE, 0.f, 1.f, 0.5f, "Rise time 1");
+        configParam(RISE + 1, 0.f, 1.f, 0.5f, "Rise time 2");
+        configParam(RISE + 2, 0.f, 1.f, 0.5f, "Rise time 3");
+        configParam(RISE + 3, 0.f, 1.f, 0.5f, "Rise time 4");
+
+        configParam(FALL, 0.f, 1.f, 0.5f, "Fall time 1");
+        configParam(FALL + 1, 0.f, 1.f, 0.5f, "Fall time 2");
+        configParam(FALL + 2, 0.f, 1.f, 0.5f, "Fall time 3");
+        configParam(FALL + 3, 0.f, 1.f, 0.5f, "Fall time 4");
+
+        configSwitch(SW, 0.f, 2.f, 1.0f, "Range 1", {"State 1", "State 2", "State 3"});
+        configSwitch(SW + 1, 0.f, 2.f, 1.0f, "Range 2", {"State 1", "State 2", "State 3"});
+        configSwitch(SW + 2, 0.f, 2.f, 1.0f, "Range 3", {"State 1", "State 2", "State 3"});
+        configSwitch(SW + 3, 0.f, 2.f, 1.0f, "Range 4", {"State 1", "State 2", "State 3"});
+
+        configInput(TRIG, "Trig 1 In");
+        configInput(TRIG + 1, "Trig 2 In");
+        configInput(TRIG + 2, "Trig 3 In");
+        configInput(TRIG + 3, "Trig 4 In");
+
+        configOutput(OUT, "Out 1");
+        configOutput(OUT + 1, "Out 1");
+        configOutput(OUT + 2, "Out 1");
+        configOutput(OUT + 3, "Out 1");
     }
 
     // Override the process method to implement the module's functionality.
