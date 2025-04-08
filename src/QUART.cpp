@@ -73,10 +73,10 @@ struct QUART : Module
         configParam(FALL + 2, 0.f, 1.f, 0.5f, "Fall time 3");
         configParam(FALL + 3, 0.f, 1.f, 0.5f, "Fall time 4");
 
-        configSwitch(SW, 0.f, 2.f, 1.0f, "Range 1", {"State 1", "State 2", "State 3"});
-        configSwitch(SW + 1, 0.f, 2.f, 1.0f, "Range 2", {"State 1", "State 2", "State 3"});
-        configSwitch(SW + 2, 0.f, 2.f, 1.0f, "Range 3", {"State 1", "State 2", "State 3"});
-        configSwitch(SW + 3, 0.f, 2.f, 1.0f, "Range 4", {"State 1", "State 2", "State 3"});
+        configSwitch(SW, 0.f, 2.f, 1.0f, "Range 1", {"Slow", "Fast", "Medium"});
+        configSwitch(SW + 1, 0.f, 2.f, 1.0f, "Range 2", {"Slow", "Fast", "Medium"});
+        configSwitch(SW + 2, 0.f, 2.f, 1.0f, "Range 3", {"Slow", "Fast", "Medium"});
+        configSwitch(SW + 3, 0.f, 2.f, 1.0f, "Range 4", {"Slow", "Fast", "Medium"});
 
         configInput(TRIG, "Trig 1 In");
         configInput(TRIG + 1, "Trig 2 In");
