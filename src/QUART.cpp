@@ -55,11 +55,12 @@ struct QUART : Module
         config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
         for (int i = 0; i < CHANNELS; i++){
             // Configure parameters for rise time, fall time, and switch position with default values.
-            configParam(RISE + i, 0.f, 1.f, 0.5f, "Rise time");
-            configParam(FALL + i, 0.f, 1.f, 0.5f, "Fall time");
-            configParam(SW + i, 0.f, 2.f, 1.0f, "Frequency divider");
+            configParam(RISE + i, 0.f, 1.f, 0.5f, "Rise time " + std::to_string(i + 1));
+            configParam(FALL + i, 0.f, 1.f, 0.5f, "Fall time " + std::to_string(i + 1));
+            configParam(SW + i, 0.f, 2.f, 1.0f, "Freq. divider " + std::to_string(i + 1));
             configInput(TRIG + i, "Trigger " + std::to_string(i + 1));
             configOutput(OUT + i, "Channel " + std::to_string(i + 1));
+            configSwitch(SW, 0.f, 2.f, 1.0f, "Range " + std::to_string(i + 1), {"Slow", "Fast", "Medium"});
 
             // Initialize the envelope generator for each channel.
             ENV[i].init(APP->engine->getSampleRate());
