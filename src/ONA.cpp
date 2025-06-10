@@ -448,29 +448,29 @@ struct ONAWidget : ModuleWidget
         //addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
         addChild(createWidget<ScrewSilver>(Vec(90, 363.5)));
 
-        addParam(createParamCentered<NANOComponents::NANOBlackKnobSwitch>(mm2px(Vec(20, 18.5)), module, ONA::OCT_PARAM));
-        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(20, 49)), module, ONA::FINE_PARAM));
+        addParam(createParamCentered<NANOComponents::NANOBlackKnobSwitch>(mm2px(Vec(20.18, 18.5)), module, ONA::OCT_PARAM));
+        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(20.18, 49)), module, ONA::FINE_PARAM));
 
-        addParam(createParamCentered<Trimpot>(mm2px(Vec(7.65, 66.75)), module, ONA::FM_PARAM));
-        addParam(createParamCentered<Trimpot>(mm2px(Vec(32.5, 66.75)), module, ONA::PW_PARAM));
+        addParam(createParamCentered<Trimpot>(mm2px(Vec(7.75, 66.95)), module, ONA::FM_PARAM));
+        addParam(createParamCentered<Trimpot>(mm2px(Vec(32.65, 66.95)), module, ONA::PW_PARAM));
 
-        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(7.5, 37.0)), module, ONA::FM_SW_PARAM));
-        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(32.5, 37.0)), module, ONA::MODE_PARAM));
+        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(7.68, 37.0)), module, ONA::FM_SW_PARAM));
+        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(32.68, 37.0)), module, ONA::MODE_PARAM));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5, 82.25)), module, ONA::FM_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 82.25)), module, ONA::OCT_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25, 82.25)), module, ONA::SYNC_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35, 82.25)), module, ONA::PW_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.18, 82.25)), module, ONA::FM_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.18, 82.25)), module, ONA::OCT_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25.18, 82.25)), module, ONA::SYNC_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35.18, 82.25)), module, ONA::PW_INPUT));
 
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5, 95.25)), module, ONA::MORPH1_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15, 95.25)), module, ONA::MORPH2_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25, 95.25)), module, ONA::SUB1_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35, 95.25)), module, ONA::SUB2_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5.18, 95.25)), module, ONA::MORPH1_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.18, 95.25)), module, ONA::MORPH2_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25.18, 95.25)), module, ONA::SUB1_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35.18, 95.25)), module, ONA::SUB2_OUTPUT));
 
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5, 108.25)), module, ONA::SINE_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15, 108.25)), module, ONA::TRIANGLE_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25, 108.25)), module, ONA::SAW_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35, 108.25)), module, ONA::PULSE_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5.18, 108.25)), module, ONA::SINE_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.18, 108.25)), module, ONA::TRIANGLE_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25.18, 108.25)), module, ONA::SAW_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35.18, 108.25)), module, ONA::PULSE_OUTPUT));
     }
 };
 

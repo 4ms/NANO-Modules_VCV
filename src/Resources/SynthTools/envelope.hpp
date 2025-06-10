@@ -21,14 +21,16 @@ class ADEnvelope {
 public:
     // Default constructor
     ADEnvelope() : mSampleRate(44100.0f), mCurrentPhase(0.0f), mState(State::Idle),
-                mAttackShape(0.5f), mDecayShape(0.5f),
-                mOutputLevel(1.0f), mOutputOffset(0.0f), mResetOnTrigger(false) {}
+                   mAttackShape(0.5f), mDecayShape(0.5f),
+                   mOutputLevel(1.0f), mOutputOffset(0.0f), mResetOnTrigger(false),
+                   mSustainLevel(0.5f), mSustainActive(false), mInputSignal(0.0f), mSlewOutput(0.0f) {}
 
     // Enums to represent the state of the envelope
     enum class State {
         Idle,
         Attack,
-        Decay
+        Decay,
+        Sustain
     };
 
     // Initializes the envelope with a specific sample rate
@@ -48,6 +50,16 @@ public:
         mDecay = decay;
     }
 
+    // Sets the sustain level
+    void setSustainLevel(float sustainLevel) {
+        mSustainLevel = clamp(sustainLevel, 0.0f, 1.0f);
+    }
+
+    // Activates or deactivates the sustain stage
+    void setSustainActive(bool active) {
+        mSustainActive = active;
+    }
+
     // Sets the shape of the attack stage
     void setAttackShape(float shape) {
         mAttackShape = clamp(shape, 0.0f, 1.0f);
@@ -59,12 +71,12 @@ public:
     }
 
     // Sets the looping functionality
-    void setLooping(bool looping) {
-        // Check if looping is being enabled and the envelope is not currently cycling
-        if (looping && !mLooping && mState == State::Idle) {
+    void setLooping(float looping) {
+        bool isLooping = (looping >= 1.0f);
+        if (isLooping && !mLooping) {
             trigger(); // Automatically trigger the envelope to start cycling
         }
-        mLooping = looping;
+        mLooping = isLooping;
     }
 
     // Sets the output level
@@ -86,21 +98,36 @@ public:
     void trigger() {
         if (mResetOnTrigger) {
             mCurrentPhase = 0.0f; // Reset phase to the start for a new attack
-        } else if (mState == State::Decay){
+        } else if (mState == State::Decay) {
             // Recalculate starting phase for a smooth transition into the attack phase
             mCurrentPhase = Shaper::inverseShapePhase(getCurveNormalized(), mAttackShape, STEEPNESS_FACTOR); // Adjust steepness as needed
         }
-        mState = State::Attack;
+
+        // If looping is enabled, set the state to Attack or Sustain as needed
+        if (mLooping && mState == State::Idle) {
+            mState = State::Attack;
+        } else {
+            // Otherwise, proceed to Attack state
+            mState = State::Attack;
+        }
     }
 
     // Process the envelope for the current sample
     void process(float triggerValue) {
         inTrig.process(triggerValue);
 
-        if (inTrig.getTriggerOutput()) {
-            trigger();
+        // Trigger the envelope if sustain is active and the gate is active
+        if (!mLooping && mSustainActive) {
+            if (inTrig.getGateOutput()) {
+                trigger(); // Start the envelope if sustain is active and gate is high
+            }
+        } else {
+            if (inTrig.getTriggerOutput()) {
+                trigger(); // Start the envelope if looping is not active or trigger is high
+            }
         }
 
+        // Handle state transitions and processing
         switch (mState) {
             case State::Attack:
                 advancePhase(mCurrentPhase, mAttack, mAttackShape, true);
@@ -112,12 +139,22 @@ public:
             case State::Decay:
                 advancePhase(mCurrentPhase, mDecay, mDecayShape, false);
                 if (mCurrentPhase <= 0.0f) {
-                    if (mLooping) {
+                    if (mSustainActive && !mLooping) {
+                        mState = State::Sustain; // Transition to Sustain if active
+                    } else if (mLooping) {
                         trigger(); // Restart the envelope if looping is enabled
                     } else {
                         mCurrentPhase = 0.0f;
                         mState = State::Idle;
                     }
+                }
+                break;
+            case State::Sustain:
+                // Sustain stage: Maintain the sustain level
+                // Transition to Idle if sustain is not active or if external conditions require
+                if (!mSustainActive) {
+                    mState = State::Idle;
+                    mCurrentPhase = 0.0f; // Optionally reset phase for clarity
                 }
                 break;
             case State::Idle:
@@ -128,6 +165,9 @@ public:
 
     // Get the current output level of the envelope
     float getPhaseOutput() const {
+        if (mState == State::Sustain) {
+            return (mSustainLevel * mOutputLevel) + mOutputOffset;
+        }
         return (mCurrentPhase * mOutputLevel) + mOutputOffset;
     }
 
@@ -141,9 +181,21 @@ public:
         return mCurrentCurve;
     }
 
+    // Check if the envelope has nearly ended
     bool getEndOfCycle() const {
         return mCurrentCurve < 0.01f;
     }
+
+    // Check if the envelope is in the rising phase
+    bool isRising() const {
+        return mState == State::Attack;
+    }
+
+    // Check if the envelope is in the falling phase
+    bool isFalling() const {
+        return mState == State::Decay;
+    }
+
 
 private:
     float mSampleRate;
@@ -157,9 +209,14 @@ private:
     float mOutputLevel;
     float mOutputOffset;
     bool mResetOnTrigger;
+    bool mSustainActive;
+    float mSustainLevel; // Sustain level
+    float mInputSignal; // External input signal for slew limiting
+    float mSlewOutput; // Slewed signal output
     TriggerHandler inTrig;
     State mState;
 
+    // Advance the phase for normal processing
     void advancePhase(float& currentPhase, float duration, float shape, bool increasing) {
         float deltaTime = 1.0f / mSampleRate; // Time passed per sample
         float phaseProgress = deltaTime / duration; // Fraction of the phase completed per sample

@@ -1,12 +1,12 @@
 {
   "slug": "NANOModules",
   "name": "NANO Modules",
-  "version": "2.3.6",
+  "version": "2.3.9",
   "license": "Proprietary",
   "brand": "NANO Modules",
   "author": "Jorge Gutierrez",
   "authorEmail": "jorge@nano-modules.com",
-  "authorUrl": "http://nano-modules.com",
+  "authorUrl": "http:/nano-modules.com",
   "pluginUrl": "http://nano-modules.com",
   "manualUrl": "http://nano-modules.com",
   "sourceUrl": "",
@@ -155,6 +155,48 @@
         "Random",
         "Sample and hold",
         "Slew limiter",
+        "Quad",
+        "Hardware clone"
+      ]
+    },
+    {
+      "slug": "ARC",
+      "name": "ARC",
+      "description": "Dual Function Generator",
+      "manualUrl": "https://nano-modules.com/wp-content/uploads/2024/08/ARC-Manual.pdf",
+      "modularGridUrl": "https://www.modulargrid.net/e/nano-modules-arc",
+      "tags": [
+        "Envelope generator",
+        "Oscillator",
+        "LFO",
+        "Slew limiter",
+        "VCA",
+        "Logic",
+        "Hardware clone"
+      ]
+    },
+    {
+      "slug": "STFONT",
+      "name": "ST FONT",
+      "description": "Stereo Liquid Filter",
+      "manualUrl": "https://nano-modules.com/wp-content/uploads/2024/11/STFONT-Manual.pdf",
+      "modularGridUrl": "https://modulargrid.net/e/nano-modules-st-font",
+      "tags": [
+        "Filter",
+        "Oscillator",
+        "VCA",
+        "Distortion",
+        "Hardware clone"
+      ]
+    },
+    {
+      "slug": "OCTA",
+      "name": "OCTA",
+      "description": "Analog drums",
+      "manualUrl": "",
+      "modularGridUrl": "https://modulargrid.net/e/nano-modules-octa",
+      "tags": [
+        "Drum",
         "Quad",
         "Hardware clone"
       ]

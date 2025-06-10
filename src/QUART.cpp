@@ -55,12 +55,11 @@ struct QUART : Module
         config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
         for (int i = 0; i < CHANNELS; i++){
             // Configure parameters for rise time, fall time, and switch position with default values.
-            configParam(RISE + i, 0.f, 1.f, 0.5f, "Rise time " + std::to_string(i + 1));
-            configParam(FALL + i, 0.f, 1.f, 0.5f, "Fall time " + std::to_string(i + 1));
-            configParam(SW + i, 0.f, 2.f, 1.0f, "Freq. divider " + std::to_string(i + 1));
+            configParam(RISE + i, 0.f, 1.f, 0.5f, "Rise time");
+            configParam(FALL + i, 0.f, 1.f, 0.5f, "Fall time");
+            configParam(SW + i, 0.f, 2.f, 1.0f, "Frequency divider");
             configInput(TRIG + i, "Trigger " + std::to_string(i + 1));
             configOutput(OUT + i, "Channel " + std::to_string(i + 1));
-            configSwitch(SW, 0.f, 2.f, 1.0f, "Range " + std::to_string(i + 1), {"Slow", "Fast", "Medium"});
 
             // Initialize the envelope generator for each channel.
             ENV[i].init(APP->engine->getSampleRate());
@@ -123,12 +122,12 @@ struct QUARTWidget : ModuleWidget
         addChild(createWidget<ScrewSilver>(Vec(120, 363.5)));
 
         for (int i = 0; i < 4; i++){
-            addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(10, 15.30 + (i * 21.0))), module, QUART::RISE + i));
-            addParam(createParamCentered<Davies1900hBlackKnob>(mm2px(Vec(40, 15.30 + (i * 21.0))), module, QUART::FALL + i));
-            addParam(createParamCentered<NANOComponents::BarkSwitchSmallSide3P>(mm2px(Vec(25, 15.25 + (i * 21.0))), module, QUART::SW + i));
-            addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7 + i * 12, 95.25)), module, QUART::TRIG + i));
-            addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(7 + i * 12, 108.25)), module, QUART::OUT + i));
-            addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(25, 9.25 + (i * 21.0))), module, QUART::LIGHT + i));
+            addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(10.25, 15.30 + (i * 21.0))), module, QUART::RISE + i));
+            addParam(createParamCentered<Davies1900hBlackKnob>(mm2px(Vec(40.25, 15.30 + (i * 21.0))), module, QUART::FALL + i));
+            addParam(createParamCentered<NANOComponents::BarkSwitchSmallSide3P>(mm2px(Vec(25.25, 15.25 + (i * 21.0))), module, QUART::SW + i));
+            addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.25 + i * 12, 95.25)), module, QUART::TRIG + i));
+            addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(7.25 + i * 12, 108.25)), module, QUART::OUT + i));
+            addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(25.25, 9.25 + (i * 21.0))), module, QUART::LIGHT + i));
         }
     }
 };

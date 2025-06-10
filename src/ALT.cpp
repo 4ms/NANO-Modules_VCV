@@ -177,33 +177,33 @@ struct ALTWidget : ModuleWidget
         //addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
         addChild(createWidget<ScrewSilver>(Vec(91, 364)));
 
-        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(31.30, 18.6)), module, ALT::GAIN1_PARAM));
-        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(9.30, 41.1)), module, ALT::GAIN2_PARAM));
-        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(31.30, 63.6)), module, ALT::GAIN3_PARAM));
+addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(31.32, 18.2)), module, ALT::GAIN1_PARAM));
+addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(9.32, 40.7)), module, ALT::GAIN2_PARAM));
+addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(31.32, 63.2)), module, ALT::GAIN3_PARAM));
 
-        addParam(createParamCentered<Trimpot>(mm2px(Vec(7.3, 18.25)), module, ALT::ATTVER1_PARAM));
-        addParam(createParamCentered<Trimpot>(mm2px(Vec(33.3, 40.75)), module, ALT::ATTVER2_PARAM));
-        addParam(createParamCentered<Trimpot>(mm2px(Vec(7.3, 63.25)), module, ALT::ATTVER3_PARAM));
+addParam(createParamCentered<Trimpot>(mm2px(Vec(7.25, 18.25)), module, ALT::ATTVER1_PARAM));
+addParam(createParamCentered<Trimpot>(mm2px(Vec(33.25, 40.75)), module, ALT::ATTVER2_PARAM));
+addParam(createParamCentered<Trimpot>(mm2px(Vec(7.25, 63.25)), module, ALT::ATTVER3_PARAM));
 
-        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(20.4, 18.6)), module, ALT::VCA1_LIGHT));
-        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(20.2, 41.1)), module, ALT::VCA2_LIGHT));
-        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(20.4, 63.6)), module, ALT::VCA3_LIGHT));
-        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(35.25, 88.75)), module, ALT::VCA4_LIGHT));
+addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(20.35, 18.2)), module, ALT::VCA1_LIGHT));
+addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(20.25, 40.7)), module, ALT::VCA2_LIGHT));
+addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(20.35, 63.2)), module, ALT::VCA3_LIGHT));
+addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(35.25, 88.35)), module, ALT::VCA4_LIGHT));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5, 82.25)), module, ALT::VCA1_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 82.25)), module, ALT::VCA2_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25, 82.25)), module, ALT::VCA3_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35, 82.25)), module, ALT::VCA4_INPUT));
+addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.08, 81.85)), module, ALT::VCA1_INPUT));
+addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.08, 81.85)), module, ALT::VCA2_INPUT));
+addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25.08, 81.85)), module, ALT::VCA3_INPUT));
+addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35.08, 81.85)), module, ALT::VCA4_INPUT));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5, 95.25)), module, ALT::CV1_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 95.25)), module, ALT::CV2_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25, 95.25)), module, ALT::CV3_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35, 95.25)), module, ALT::CV4_INPUT));
+addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.08, 94.85)), module, ALT::CV1_INPUT));
+addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.08, 94.85)), module, ALT::CV2_INPUT));
+addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25.08, 94.85)), module, ALT::CV3_INPUT));
+addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35.08, 94.85)), module, ALT::CV4_INPUT));
 
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5.25, 108.5)), module, ALT::VCA1_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.25, 108.5)), module, ALT::VCA2_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25.25, 108.5)), module, ALT::VCA3_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35.25, 108.5)), module, ALT::VCA4_OUTPUT));
+addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5.33, 108.1)), module, ALT::VCA1_OUTPUT));
+addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.33, 108.1)), module, ALT::VCA2_OUTPUT));
+addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25.33, 108.1)), module, ALT::VCA3_OUTPUT));
+addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35.33, 108.1)), module, ALT::VCA4_OUTPUT));
     }
 };
 

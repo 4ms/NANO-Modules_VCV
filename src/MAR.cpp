@@ -129,29 +129,29 @@ struct MARWidget : ModuleWidget
 		//addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(90, 363.5)));
 
-		addParam(createParamCentered<Davies1900hLargeBlackKnob>(mm2px(Vec(20, 18.25)), module, MAR::Y_POT_PARAM));
-		addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(9, 43.35)), module, MAR::X1_POT_PARAM));
-		addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(31, 43.35)), module, MAR::X2_POT_PARAM));
-		addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(9, 66.35)), module, MAR::X3_POT_PARAM));
-		addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(31, 66.35)), module, MAR::X4_POT_PARAM));
+		addParam(createParamCentered<Davies1900hLargeBlackKnob>(mm2px(Vec(20.18, 18.25)), module, MAR::Y_POT_PARAM));
+		addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(9.18, 43.35)), module, MAR::X1_POT_PARAM));
+		addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(31.18, 43.35)), module, MAR::X2_POT_PARAM));
+		addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(9.18, 66.35)), module, MAR::X3_POT_PARAM));
+		addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(31.18, 66.35)), module, MAR::X4_POT_PARAM));
 
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5, 82.25)), module, MAR::X1_IN_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 82.25)), module, MAR::X2_IN_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5, 95.25)), module, MAR::X3_IN_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 95.25)), module, MAR::X4_IN_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.18, 82.25)), module, MAR::X1_IN_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.18, 82.25)), module, MAR::X2_IN_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.18, 95.25)), module, MAR::X3_IN_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.18, 95.25)), module, MAR::X4_IN_INPUT));
 
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25, 82.25)), module, MAR::Y1_IN_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35, 82.25)), module, MAR::Y2_IN_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25, 95.25)), module, MAR::Y3_IN_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35, 95.25)), module, MAR::Y4_IN_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25.18, 82.25)), module, MAR::Y1_IN_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35.18, 82.25)), module, MAR::Y2_IN_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25.18, 95.25)), module, MAR::Y3_IN_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35.18, 95.25)), module, MAR::Y4_IN_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5, 108.25)), module, MAR::X_OUT_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15, 108.25)), module, MAR::XINV_OUT_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25, 108.25)), module, MAR::Y_OUT_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35, 108.25)), module, MAR::XPLUSY_OUT_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5.18, 108.25)), module, MAR::X_OUT_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.18, 108.25)), module, MAR::XINV_OUT_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25.18, 108.25)), module, MAR::Y_OUT_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35.18, 108.25)), module, MAR::XPLUSY_OUT_OUTPUT));
 
-		addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(mm2px(Vec(20, 34.25)), module, MAR::Y_LIGHT));
-		addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(mm2px(Vec(20, 54.75)), module, MAR::X_LIGHT));
+		addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(mm2px(Vec(20.18, 34.25)), module, MAR::Y_LIGHT));
+		addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(mm2px(Vec(20.18, 54.75)), module, MAR::X_LIGHT));
 	}
 };
 
