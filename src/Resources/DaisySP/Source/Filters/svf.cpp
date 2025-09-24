@@ -14,12 +14,9 @@ void Svf::Init(float sample_rate)
     pre_drive_ = 0.5f;
     freq_      = 0.25f;
     damp_      = 0.0f;
-    notch_     = 0.0f;
     low_       = 0.0f;
-    high_      = 0.0f;
     band_      = 0.0f;
     peak_      = 0.0f;
-    input_     = 0.0f;
     out_notch_ = 0.0f;
     out_low_   = 0.0f;
     out_high_  = 0.0f;
@@ -30,11 +27,11 @@ void Svf::Init(float sample_rate)
 
 void Svf::Process(float in)
 {
-    input_ = in;
+    float input_ = in;
     // first pass
-    notch_ = input_ - damp_ * band_;
+    float notch_ = input_ - damp_ * band_;
     low_   = low_ + freq_ * band_;
-    high_  = notch_ - low_;
+    float high_  = notch_ - low_;
     band_  = freq_ * high_ + band_ - drive_ * band_ * band_ * band_;
     // take first sample of output
     out_low_   = 0.5f * low_;

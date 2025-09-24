@@ -69,8 +69,7 @@ class Svf
 
   private:
     float sr_, fc_, res_, drive_, freq_, damp_;
-    float notch_, low_, high_, band_, peak_;
-    float input_;
+    float low_, band_, peak_;
     float out_low_, out_high_, out_band_, out_peak_, out_notch_;
     float pre_drive_, fc_max_;
 };
