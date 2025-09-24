@@ -40,22 +40,22 @@ c/o stephen mccaul
 inline float fmax(float a, float b)
 {
     float r;
-#ifdef __ARM_ARCH_7EM__
+#if defined(__arm__) && !defined(__ARM_ARCH_7A__)
     asm("vmaxnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
 #else
     r = (a > b) ? a : b;
-#endif // __ARM_ARCH_7EM__
+#endif // __arm__
     return r;
 }
 
 inline float fmin(float a, float b)
 {
     float r;
-#ifdef __ARM_ARCH_7EM__
+#if defined(__arm__) && !defined(__ARM_ARCH_7A__)
     asm("vminnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
 #else
     r = (a < b) ? a : b;
-#endif // __ARM_ARCH_7EM__
+#endif // __arm__
     return r;
 }
 
@@ -161,16 +161,16 @@ enum class Mapping
     LOG,
 };
 
-/** Maps a float between a specified range, using a specified curve. 
- * 
+/** Maps a float between a specified range, using a specified curve.
+ *
  *  \param in a value between 0 to 1 that will be mapped to the new range.
  *  \param min the new minimum value
  *  \param max the new maxmimum value
  *  \param curve a Mapping Value to adjust the response curve of the transformation
  *               defaults to Linear. @see Mapping
- * 
+ *
  *  When using the log curve min and max, must be greater than zero.
- * 
+ *
  *  \retval returns the transformed float within the new range.
 */
 inline float
@@ -250,11 +250,11 @@ inline float SoftClip(float x)
         return SoftLimit(x);
 }
 
-/** Quick check for Invalid float values (NaN, Inf, out of range) 
- ** \param x value passed by reference, replaced by y if invalid. 
- ** \param y value to replace x if invalidity is found. 
- ** 
- ** When DEBUG is true in the build, this will halt 
+/** Quick check for Invalid float values (NaN, Inf, out of range)
+ ** \param x value passed by reference, replaced by y if invalid.
+ ** \param y value to replace x if invalidity is found.
+ **
+ ** When DEBUG is true in the build, this will halt
  ** execution for tracing the reason for the invalidity. */
 inline void TestFloat(float &x, float y = 0.f)
 {
