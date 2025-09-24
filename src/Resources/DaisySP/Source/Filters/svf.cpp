@@ -57,30 +57,37 @@ void Svf::Process(float in)
 
 void Svf::SetFreq(float f)
 {
-    fc_ = fclamp(f, 1.0e-6, fc_max_);
-    // Set Internal Frequency for fc_
-    freq_ = 2.0f
-            * sinf(PI_F
-                   * MIN(0.25f,
-                         fc_ / (sr_ * 2.0f))); // fs*2 because double sampled
-    // recalculate damp
-    damp_ = MIN(2.0f * (1.0f - powf(res_, 0.25f)),
-                MIN(2.0f, 2.0f / freq_ - freq_ * 0.5f));
+	float freq = fclamp(f, 1.0e-6f, fc_max_); 
+	if (freq != fc_) {
+		fc_ = freq;
+		// Set Internal Frequency for fc_
+		freq_ = 2.0f
+				* sinf(PI_F
+					   * MIN(0.25f,
+							 fc_ / (sr_ * 2.0f))); // fs*2 because double sampled
+		// recalculate damp
+		damp_ = MIN(2.0f * (1.0f - powf(res_, 0.25f)),
+					MIN(2.0f, 2.0f / freq_ - freq_ * 0.5f));
+	}
 }
 
 void Svf::SetRes(float r)
 {
-    float res = fclamp(r, 0.f, 1.f);
-    res_      = res;
-    // recalculate damp
-    damp_  = MIN(2.0f * (1.0f - powf(res_, 0.25f)),
-                MIN(2.0f, 2.0f / freq_ - freq_ * 0.5f));
-    drive_ = pre_drive_ * res_;
+	float res = fclamp(r, 0.f, 1.f);
+	if (res_ != res) {
+		res_      = res;
+		// recalculate damp
+		damp_  = MIN(2.0f * (1.0f - powf(res_, 0.25f)),
+					MIN(2.0f, 2.0f / freq_ - freq_ * 0.5f));
+		drive_ = pre_drive_ * res_;
+	}
 }
 
 void Svf::SetDrive(float d)
 {
-    float drv  = fclamp(d * 0.1f, 0.f, 1.f);
-    pre_drive_ = drv;
-    drive_     = pre_drive_ * res_;
+	float drv  = fclamp(d * 0.1f, 0.f, 1.f);
+	if (drv != pre_drive_) {
+		pre_drive_ = drv;
+		drive_     = pre_drive_ * res_;
+	}
 }
