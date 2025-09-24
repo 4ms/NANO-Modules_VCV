@@ -1,4 +1,5 @@
 #include "../Utility/dsp.h"
+#include "math_lut.hh"
 #include "oscillator.h"
 
 using namespace daisysp;
@@ -9,7 +10,7 @@ float Oscillator::Process()
     float out, t;
     switch(waveform_)
     {
-        case WAVE_SIN: out = sinf(phase_ * TWOPI_F); break;
+        case WAVE_SIN: out = Sinf(phase_ * TWOPI_F); break;
         case WAVE_TRI:
             t   = -1.0f + (2.0f * phase_);
             out = 2.0f * (std::abs(t) - 0.5f);

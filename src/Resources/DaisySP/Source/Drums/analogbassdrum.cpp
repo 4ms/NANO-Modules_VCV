@@ -1,5 +1,6 @@
 #include "../Utility/dsp.h"
 #include "analogbassdrum.h"
+#include "math_lut.hh"
 #include <algorithm>
 #include <cmath>
 
@@ -57,9 +58,9 @@ float AnalogBassDrum::Process(bool trigger)
     const float kRetrigPulseDuration = 0.05f * sample_rate_;
 
     const float scale = 0.001f / f0_;
-    const float q     = 1500.0f * powf(2.f, kOneTwelfth * decay_ * 80.0f);
+    const float q     = 1500.0f * Pow2(kOneTwelfth * decay_ * 80.0f);
     const float tone_f
-        = fmin(4.0f * f0_ * powf(2.f, kOneTwelfth * tone_ * 108.0f), 1.0f);
+        = fmin(4.0f * f0_ * Pow2(kOneTwelfth * tone_ * 108.0f), 1.0f);
     const float exciter_leak = 0.08f * (tone_ + 0.25f);
 
 
@@ -131,8 +132,8 @@ float AnalogBassDrum::Process(bool trigger)
         phase_ += f;
         phase_ = phase_ >= 1.f ? phase_ - 1.f : phase_;
 
-        resonator_out = sin(TWOPI_F * phase_) * sustain_gain_;
-        lp_out_       = cos(TWOPI_F * phase_) * sustain_gain_;
+        resonator_out = Sinf(TWOPI_F * phase_) * sustain_gain_;
+        lp_out_       = Cosf(TWOPI_F * phase_) * sustain_gain_;
     }
     else
     {

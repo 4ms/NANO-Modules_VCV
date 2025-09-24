@@ -12,6 +12,7 @@ https://opensource.org/licenses/MIT.
 
 #include "../Filters/svf.h"
 #include "../Synthesis/oscillator.h"
+#include "math_lut.hh"
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -261,7 +262,7 @@ class HiHat
     bool  sustain_;
     bool  trig_;
 
-    float SemitonesToRatio(float in) { return powf(2.f, in * kOneTwelfth); }
+    float SemitonesToRatio(float in) { return Pow2(in * kOneTwelfth); }
 
     float envelope_;
     float noise_clock_;

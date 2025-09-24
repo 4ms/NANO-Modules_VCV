@@ -1,6 +1,7 @@
 #include <cmath>
 #include <algorithm>
 #include "svf.h"
+#include "math_lut.hh"
 #include "../Utility/dsp.h"
 
 #define MIN(x, y) std::min((x), (y))
@@ -61,11 +62,11 @@ void Svf::SetFreq(float f)
 		fc_ = freq;
 		// Set Internal Frequency for fc_
 		freq_ = 2.0f
-				* sinf(PI_F
+				* Sinf(PI_F
 					   * MIN(0.25f,
 							 fc_ / (sr_ * 2.0f))); // fs*2 because double sampled
 		// recalculate damp
-		damp_ = MIN(2.0f * (1.0f - powf(res_, 0.25f)),
+		damp_ = MIN(2.0f * (1.0f - Pow_025(res_)),
 					MIN(2.0f, 2.0f / freq_ - freq_ * 0.5f));
 	}
 }
@@ -76,7 +77,7 @@ void Svf::SetRes(float r)
 	if (res_ != res) {
 		res_      = res;
 		// recalculate damp
-		damp_  = MIN(2.0f * (1.0f - powf(res_, 0.25f)),
+		damp_  = MIN(2.0f * (1.0f - Pow_025(res_)),
 					MIN(2.0f, 2.0f / freq_ - freq_ * 0.5f));
 		drive_ = pre_drive_ * res_;
 	}

@@ -1,4 +1,5 @@
 #include "../Utility/dsp.h"
+#include <math_lut.hh>
 #include "analogsnaredrum.h"
 #include <math.h>
 #include <stdlib.h>
@@ -67,7 +68,7 @@ void AnalogSnareDrum::SetDecay(float decay)
 {
     decay_ = decay;
     return;
-    decay_ = fmax(decay, 0.f);
+    // decay_ = fmax(decay, 0.f);
 }
 
 void AnalogSnareDrum::SetSnappy(float snappy)
@@ -80,12 +81,11 @@ float AnalogSnareDrum::Process(bool trigger)
     const float decay_xt = decay_ * (1.0f + decay_ * (decay_ - 1.0f));
     const int   kTriggerPulseDuration = 1.0e-3 * sample_rate_;
     const float kPulseDecayTime       = 0.1e-3 * sample_rate_;
-    const float q = 150.0f * powf(2.f, kOneTwelfth * decay_xt * 84.0f);
+    const float q = 150.0f * Pow2(kOneTwelfth * decay_xt * 84.0f);
     const float noise_envelope_decay
         = 1.0f
           - 0.0017f
-                * powf(2.f,
-                       kOneTwelfth * (-decay_ * (50.0f + snappy_ * 10.0f)));
+                * Pow2(kOneTwelfth * (-decay_ * (50.0f + snappy_ * 10.0f)));
     const float exciter_leak = snappy_ * (2.0f - snappy_) * 0.1f;
 
     float snappy = snappy_ * 1.1f - 0.05f;
@@ -177,7 +177,7 @@ float AnalogSnareDrum::Process(bool trigger)
 
         shell += gain[i]
                  * (sustain_
-                        ? sin(phase_[i] * TWOPI_F) * sustain_gain_value * 0.25f
+                        ? Sinf(phase_[i] * TWOPI_F) * sustain_gain_value * 0.25f
                         : resonator_[i].Band() + excitation * exciter_leak);
     }
     shell = SoftClip(shell);
