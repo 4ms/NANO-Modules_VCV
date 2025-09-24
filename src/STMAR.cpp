@@ -165,43 +165,43 @@ struct STMAR : Module
 struct STMARWidget : ModuleWidget
 {
     STMARWidget(STMAR *module)
-    {
+   {
         setModule(module);
         setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/STMAR.svg")));
 
-		addChild(createWidget<ScrewSilver>(Vec(14, 1.5)));
-		//addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
-		//addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
-		addChild(createWidget<ScrewSilver>(Vec(90, 363.5)));
+        addChild(createWidget<ScrewSilver>(Vec(14.18, 1.5)));
+        //addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
+        //addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+        addChild(createWidget<ScrewSilver>(Vec(90.18, 363.5)));
 
-        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(30.0, 20.25)), module, STMAR::POT1_PARAM));
-        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(30.0, 47.75)), module, STMAR::POT2_PARAM));
-        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(30.0, 75.40)), module, STMAR::POT3_PARAM));
-        addParam(createParamCentered<Davies1900hBlackKnob>(mm2px(Vec(30.0, 103.0)), module, STMAR::POTM_PARAM));
+        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(30.18, 20.25)), module, STMAR::POT1_PARAM));
+        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(30.18, 47.75)), module, STMAR::POT2_PARAM));
+        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(30.18, 75.40)), module, STMAR::POT3_PARAM));
+        addParam(createParamCentered<Davies1900hBlackKnob>(mm2px(Vec(30.18, 103.0)), module, STMAR::POTM_PARAM));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5,  14.50)), module, STMAR::L1_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 14.50)), module, STMAR::R1_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5 , 27.50)), module, STMAR::CV1_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.18,  14.50)), module, STMAR::L1_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.18, 14.50)), module, STMAR::R1_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.18 , 27.50)), module, STMAR::CV1_INPUT));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5,  42.00)), module, STMAR::L2_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 42.00)), module, STMAR::R2_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5 , 55.00)), module, STMAR::CV2_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.18,  42.00)), module, STMAR::L2_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.18, 42.00)), module, STMAR::R2_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.18 , 55.00)), module, STMAR::CV2_INPUT));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5,  69.25)), module, STMAR::L3_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 69.25)), module, STMAR::R3_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5 , 82.25)), module, STMAR::CV3_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.18,  69.25)), module, STMAR::L3_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.18, 69.25)), module, STMAR::R3_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.18 , 82.25)), module, STMAR::CV3_INPUT));
 
-        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(15.0, 27.50)), module, STMAR::MUTE1_PARAM));
-        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(15.0, 54.75)), module, STMAR::MUTE2_PARAM));
-        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(15.0, 82.25)), module, STMAR::MUTE3_PARAM));
+        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(15.18, 27.50)), module, STMAR::MUTE1_PARAM));
+        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(15.18, 54.75)), module, STMAR::MUTE2_PARAM));
+        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(15.18, 82.25)), module, STMAR::MUTE3_PARAM));
 
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5, 108.25)), module, STMAR::L_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15, 108.25)), module, STMAR::R_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5.18, 108.25)), module, STMAR::L_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.18, 108.25)), module, STMAR::R_OUTPUT));
 
-        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(4.00, 99.5)), module, STMAR::L_LIGHT));
-        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(16.0, 99.5)), module, STMAR::R_LIGHT));
-        addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(4.00, 95.0)), module, STMAR::CLIPL_LIGHT));
-        addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(16.0, 95.0)), module, STMAR::CLIPR_LIGHT));
+        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(4.18, 99.5)), module, STMAR::L_LIGHT));
+        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(16.18, 99.5)), module, STMAR::R_LIGHT));
+        addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(4.18, 95.0)), module, STMAR::CLIPL_LIGHT));
+        addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(16.18, 95.0)), module, STMAR::CLIPR_LIGHT));
     }
 };
 

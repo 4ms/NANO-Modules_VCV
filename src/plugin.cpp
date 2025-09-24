@@ -17,8 +17,11 @@ void init(Plugin *p)
     p->addModel(modelCEQ);    
     p->addModel(modelSTMAR); 
     p->addModel(modelPerformanceMixer); 
-    p->addModel(modelVCVRANDOM);    
     p->addModel(modelEXP4);    
+    p->addModel(modelVCVRANDOM);  
+    p->addModel(modelARC);    
+    p->addModel(modelSTFONT);    
+    p->addModel(modelOCTA);    
     p->addModel(modelBLANK12Hp);
     p->addModel(modelBLANK8Hp);
     p->addModel(modelBLANK6Hp);

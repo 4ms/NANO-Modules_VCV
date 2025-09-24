@@ -34,6 +34,16 @@ namespace NANOComponents
         }
     };
 
+    struct BarkSwitchSmallVert3P : app::SvgSwitch
+    {
+        BarkSwitchSmallVert3P()
+        {
+            addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Components/BarkSwitchSmallVert_0.svg")));
+            addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Components/BarkSwitchSmallVert_1.svg")));
+            addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Components/BarkSwitchSmallVert_2.svg")));
+        }
+    };
+
     struct NANOSwithcKnob : app::SvgKnob {
 	widget::SvgWidget* bg;
 

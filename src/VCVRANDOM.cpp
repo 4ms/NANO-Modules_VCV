@@ -236,38 +236,37 @@ struct VCVRANDOMWidget : ModuleWidget
         setModule(module);
         setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/VCVRANDOM.svg")));
 
-        addParam(createLightParamCentered<LEDSliderRed>(mm2px(Vec(7, 35)), module, VCVRANDOM::RATE_PARAM, VCVRANDOM::RATE_LIGHT));
-        addParam(createLightParamCentered<LEDSliderRed>(mm2px(Vec(19, 35)), module, VCVRANDOM::PROB_PARAM, VCVRANDOM::PROB_LIGHT));
-        addParam(createLightParamCentered<LEDSliderRed>(mm2px(Vec(31, 35)), module, VCVRANDOM::RND_PARAM, VCVRANDOM::RND_LIGHT));
-        addParam(createLightParamCentered<LEDSliderRed>(mm2px(Vec(43, 35)), module, VCVRANDOM::SHAPE_PARAM, VCVRANDOM::SHAPE_LIGHT));
+        addParam(createLightParamCentered<LEDSliderRed>(mm2px(Vec(7.28, 35)), module, VCVRANDOM::RATE_PARAM, VCVRANDOM::RATE_LIGHT));
+        addParam(createLightParamCentered<LEDSliderRed>(mm2px(Vec(19.28, 35)), module, VCVRANDOM::PROB_PARAM, VCVRANDOM::PROB_LIGHT));
+        addParam(createLightParamCentered<LEDSliderRed>(mm2px(Vec(31.28, 35)), module, VCVRANDOM::RND_PARAM, VCVRANDOM::RND_LIGHT));
+        addParam(createLightParamCentered<LEDSliderRed>(mm2px(Vec(43.28, 35)), module, VCVRANDOM::SHAPE_PARAM, VCVRANDOM::SHAPE_LIGHT));
 
-        addParam(createParamCentered<Trimpot>(mm2px(Vec(7, 67)), module, VCVRANDOM::RATE_ATV));
-        addParam(createParamCentered<Trimpot>(mm2px(Vec(19, 67)), module, VCVRANDOM::PROB_ATV));
-        addParam(createParamCentered<Trimpot>(mm2px(Vec(31, 67)), module, VCVRANDOM::RND_ATV));
-        addParam(createParamCentered<Trimpot>(mm2px(Vec(43, 67)), module, VCVRANDOM::SHAPE_ATV));
+        addParam(createParamCentered<Trimpot>(mm2px(Vec(7.28, 67)), module, VCVRANDOM::RATE_ATV));
+        addParam(createParamCentered<Trimpot>(mm2px(Vec(19.28, 67)), module, VCVRANDOM::PROB_ATV));
+        addParam(createParamCentered<Trimpot>(mm2px(Vec(31.28, 67)), module, VCVRANDOM::RND_ATV));
+        addParam(createParamCentered<Trimpot>(mm2px(Vec(43.28, 67)), module, VCVRANDOM::SHAPE_ATV));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7,  82.25)), module, VCVRANDOM::RATE_CV));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(19,  82.25)), module, VCVRANDOM::PROB_CV));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(31,  82.25)), module, VCVRANDOM::RND_CV));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(43,  82.25)), module, VCVRANDOM::SHAPE_CV));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.28,  82.25)), module, VCVRANDOM::RATE_CV));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(19.28,  82.25)), module, VCVRANDOM::PROB_CV));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(31.28,  82.25)), module, VCVRANDOM::RND_CV));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(43.28,  82.25)), module, VCVRANDOM::SHAPE_CV));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7,  95.25)), module, VCVRANDOM::TRIG_IN));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(19,  95.25)), module, VCVRANDOM::VOLT_IN));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.28,  95.25)), module, VCVRANDOM::TRIG_IN));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(19.28,  95.25)), module, VCVRANDOM::VOLT_IN));
 
-        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(31, 95.25)), module, VCVRANDOM::OFFSET_SW));
+        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(31.28, 95.25)), module, VCVRANDOM::OFFSET_SW));
 
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(43,  95.25)), module, VCVRANDOM::TRIG_OUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(43.28,  95.25)), module, VCVRANDOM::TRIG_OUT));
 
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(7,  108.25)), module, VCVRANDOM::STEP_OUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(19,  108.25)), module, VCVRANDOM::LIN_OUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(31,  108.25)), module, VCVRANDOM::EXP_OUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(43,  108.25)), module, VCVRANDOM::SMTH_OUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(7.28,  108.25)), module, VCVRANDOM::STEP_OUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(19.28,  108.25)), module, VCVRANDOM::LIN_OUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(31.28,  108.25)), module, VCVRANDOM::EXP_OUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(43.28,  108.25)), module, VCVRANDOM::SMTH_OUT));
 
-		addChild(createWidget<ScrewSilver>(Vec(14, 1.5)));
-		//addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
-		//addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
-		addChild(createWidget<ScrewSilver>(Vec(120, 363.5)));
-
+        addChild(createWidget<ScrewSilver>(Vec(14.28, 1.5)));
+        //addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
+        //addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+        addChild(createWidget<ScrewSilver>(Vec(120.28, 363.5)));
     }
 
  // Override the appendContextMenu method

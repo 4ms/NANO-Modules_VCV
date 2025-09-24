@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 Electrosmith, Corp, Emilie Gillet
+
+Use of this source code is governed by an MIT-style
+license that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
 /** Helpful defines, functions, and other utilities for use in/with daisysp modules.
 */
 #pragma once
@@ -80,10 +88,18 @@ inline float fastroot(float f, int n)
     lp = (long *)(&f);
     l  = *lp;
     l -= 0x3F800000;
-    l >>= (n = 1);
+    l >>= (n - 1);
     l += 0x3F800000;
     *lp = l;
     return f;
+}
+
+/** Significantly more efficient than fmodf(x, 1.0f) for calculating
+ *  the decimal part of a floating point value.
+ */
+inline float fastmod1f(float x)
+{
+    return x - static_cast<int>(x);
 }
 
 /** From http://openaudio.blogspot.com/2017/02/faster-log10-and-pow.html
@@ -180,8 +196,9 @@ c/o stephen mccaul
 template <typename T>
 T median(T a, T b, T c)
 {
-    return (b < a) ? (b < c) ? (c < a) ? c : a : b
-                   : (a < c) ? (c < b) ? c : b : a;
+    return (b < a)   ? (b < c) ? (c < a) ? c : a : b
+           : (a < c) ? (c < b) ? c : b
+                     : a;
 }
 
 /** Ported from pichenettes/eurorack/plaits/dsp/oscillator/oscillator.h

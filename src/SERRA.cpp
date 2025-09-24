@@ -180,7 +180,7 @@ struct SERRA : Module
         outputs[OUT_OUTPUT].setVoltage(signalOut);
         
         // Update module lights based on the current states.
-        lights[GATE_SW_LIGHT].setSmoothBrightness(gateInput, 0.01f);
+        lights[GATE_SW_LIGHT].setSmoothBrightness(gateInput, 0.00001f);
         lights[ENV_LIGHT].setSmoothBrightness(envelopeOut, 0.01f);
         lights[EOC_LIGHT].setSmoothBrightness(envelopeEoc, 0.01f);
         lights[OUT_LIGHT + 0].setSmoothBrightness(fmaxf(0.0, signalOut / 5.0), 0.01f);
@@ -200,35 +200,35 @@ struct SERRAWidget : ModuleWidget
         //addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
         addChild(createWidget<ScrewSilver>(Vec(120, 363.5)));
 
-        addParam(createParamCentered<PB61303>(mm2px(Vec(25.0, 36.25)), module, SERRA::GATE_SW_PARAM));
-        addChild(createLightCentered<PB61303Light<WhiteLight>>(mm2px(Vec(25.0, 36.25)), module, SERRA::GATE_SW_LIGHT));
+        addParam(createParamCentered<PB61303>(mm2px(Vec(25.26, 36.25)), module, SERRA::GATE_SW_PARAM));
+        addChild(createLightCentered<PB61303Light<WhiteLight>>(mm2px(Vec(25.26, 36.25)), module, SERRA::GATE_SW_LIGHT));
 
-        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(9.0, 36.25)), module, SERRA::NORM_SW_PARAM));
-        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(41.0, 36.25)), module, SERRA::SPEED_SW_PARAM));
+        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(9.26, 36.25)), module, SERRA::NORM_SW_PARAM));
+        addParam(createParamCentered<NANOComponents::BarkSwitchSmall2P>(mm2px(Vec(41.26, 36.25)), module, SERRA::SPEED_SW_PARAM));
 
-        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(38.0, 15.25)), module, SERRA::OFFSET_PARAM));
-        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(12.0, 15.25)), module, SERRA::ATTVER_PARAM));
+        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(38.26, 15.25)), module, SERRA::OFFSET_PARAM));
+        addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(12.26, 15.25)), module, SERRA::ATTVER_PARAM));
 
-        addParam(createParamCentered<VCVSlider>(mm2px(Vec(4.5, 66.5)), module, SERRA::ATTACK_PARAM));
-        addParam(createParamCentered<VCVSlider>(mm2px(Vec(14.5, 66.5)), module, SERRA::DECAY_PARAM));
-        addParam(createParamCentered<VCVSlider>(mm2px(Vec(24.5, 66.5)), module, SERRA::SUSTAIN_PARAM));
-        addParam(createParamCentered<VCVSlider>(mm2px(Vec(34.5, 66.5)), module, SERRA::RELEASE_PARAM));
+        addParam(createParamCentered<VCVSlider>(mm2px(Vec(4.76, 66.5)), module, SERRA::ATTACK_PARAM));
+        addParam(createParamCentered<VCVSlider>(mm2px(Vec(14.76, 66.5)), module, SERRA::DECAY_PARAM));
+        addParam(createParamCentered<VCVSlider>(mm2px(Vec(24.76, 66.5)), module, SERRA::SUSTAIN_PARAM));
+        addParam(createParamCentered<VCVSlider>(mm2px(Vec(34.76, 66.5)), module, SERRA::RELEASE_PARAM));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5, 95.25)), module, SERRA::A_CV_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 95.25)), module, SERRA::D_CV_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25, 95.25)), module, SERRA::S_CV_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35, 95.25)), module, SERRA::R_CV_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(45, 95.25)), module, SERRA::SIG_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.26, 95.25)), module, SERRA::A_CV_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.26, 95.25)), module, SERRA::D_CV_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25.26, 95.25)), module, SERRA::S_CV_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(35.26, 95.25)), module, SERRA::R_CV_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(45.26, 95.25)), module, SERRA::SIG_INPUT));
 
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5, 108.25)), module, SERRA::GATE_INPUT));
-        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15, 108.25)), module, SERRA::TRIG_INPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25, 108.25)), module, SERRA::ENV_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35, 108.25)), module, SERRA::EOC_OUTPUT));
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(45, 108.25)), module, SERRA::OUT_OUTPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.26, 108.25)), module, SERRA::GATE_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.26, 108.25)), module, SERRA::TRIG_INPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25.26, 108.25)), module, SERRA::ENV_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(35.26, 108.25)), module, SERRA::EOC_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(45.26, 108.25)), module, SERRA::OUT_OUTPUT));
 
-        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(45.0, 53.75)), module, SERRA::ENV_LIGHT));
-        addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(45.0, 67.35)), module, SERRA::EOC_LIGHT));
-        addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(45.0, 78.75)), module, SERRA::OUT_LIGHT));
+        addChild(createLightCentered<MediumLight<WhiteLight>>(mm2px(Vec(45.26, 53.75)), module, SERRA::ENV_LIGHT));
+        addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(45.26, 67.35)), module, SERRA::EOC_LIGHT));
+        addChild(createLightCentered<MediumLight<GreenRedLight>>(mm2px(Vec(45.26, 78.75)), module, SERRA::OUT_LIGHT));
     }
 };
 
