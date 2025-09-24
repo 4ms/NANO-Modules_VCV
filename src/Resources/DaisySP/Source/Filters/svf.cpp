@@ -1,7 +1,9 @@
-#include <math.h>
+#include <cmath>
+#include <algorithm>
 #include "svf.h"
 #include "../Utility/dsp.h"
-#define MIN(x, y) (((x) < (y)) ? (x) : (y))
+
+#define MIN(x, y) std::min((x), (y))
 
 using namespace daisysp;
 

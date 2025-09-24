@@ -1,5 +1,6 @@
 #include "../Utility/dsp.h"
 #include "analogbassdrum.h"
+#include <algorithm>
 #include <cmath>
 
 using namespace daisysp;
@@ -43,7 +44,7 @@ inline float AnalogBassDrum::Diode(float x)
     else
     {
         x *= 2.0f;
-        return 0.7f * x / (1.0f + fabsf(x));
+        return 0.7f * x / (1.0f + std::abs(x));
     }
 }
 

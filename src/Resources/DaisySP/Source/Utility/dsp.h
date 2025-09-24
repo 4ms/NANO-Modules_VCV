@@ -14,6 +14,7 @@ https://opensource.org/licenses/MIT.
 #include <cassert>
 #include <cstdint>
 #include <random>
+#include <algorithm>
 #include <cmath>
 
 /** PIs
@@ -42,6 +43,8 @@ inline float fmax(float a, float b)
     float r;
 #if defined(__arm__) && !defined(__ARM_ARCH_7A__)
     asm("vmaxnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
+#elif defined(__ARM_ARCH_7A__)
+    r = std::max(a, b);
 #else
     r = (a > b) ? a : b;
 #endif // __arm__
@@ -53,6 +56,8 @@ inline float fmin(float a, float b)
     float r;
 #if defined(__arm__) && !defined(__ARM_ARCH_7A__)
     asm("vminnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
+#elif defined(__ARM_ARCH_7A__)
+    r = std::min(a, b);
 #else
     r = (a < b) ? a : b;
 #endif // __arm__
@@ -63,7 +68,11 @@ inline float fmin(float a, float b)
 */
 inline float fclamp(float in, float min, float max)
 {
+#if defined(__ARM_ARCH_7A__)
+    return std::clamp(in, min, max);
+#else
     return fmin(fmax(in, min), max);
+#endif
 }
 
 /** From Musicdsp.org "Fast power and root estimates for 32bit floats)
